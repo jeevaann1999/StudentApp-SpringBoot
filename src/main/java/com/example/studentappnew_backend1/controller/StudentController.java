@@ -18,7 +18,14 @@ public class StudentController {
     @PostMapping(path = "/add",consumes ="application/json",produces = "application/json")
     public  String AddStudent(@RequestBody Students s){
         System.out.println(s.getName().toString());
+        System.out.println(s.getRollno());
+        System.out.println(s.getAdmno().toString());
+        System.out.println(s.getCollege().toString());
         return "Student Added Successfully";
+    }
+    @GetMapping("/view")
+    public String ViewStudent(){
+        return "Welcome to the view all page";
     }
 
 
