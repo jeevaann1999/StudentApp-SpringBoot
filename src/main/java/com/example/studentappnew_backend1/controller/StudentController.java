@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class StudentController {
@@ -15,13 +16,15 @@ public class StudentController {
 
     @CrossOrigin(origins = "*")
     @PostMapping(path = "/add",consumes ="application/json",produces = "application/json")
-    public  String AddStudent(@RequestBody Students s){
+    public Map<String, String> AddStudent(@RequestBody Students s){
         System.out.println(s.getName().toString());
         System.out.println(s.getRollno());
         System.out.println(s.getAdmno().toString());
         System.out.println(s.getCollege().toString());
         dao.save(s);
-        return "Student Added Successfully";
+        HashMap<String, String> map = new HashMap<>();
+        map.put("status", "success");
+        return map;
     }
 
     @CrossOrigin(origins = "*")
