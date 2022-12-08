@@ -5,6 +5,8 @@ import com.example.studentappnew_backend1.model.Students;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class StudentController {
     @Autowired
@@ -22,9 +24,11 @@ public class StudentController {
     }
 
     @GetMapping("/view")
-    public String ViewStudent(){
-        return "Welcome to view courses";
+    public List<Students> ViewStudent(){
+        return (List<Students>) dao.findAll();
     }
+
+
 
 
 }
